@@ -258,6 +258,8 @@ func fillRequestDataHTTP(span *tracepb.Span, data *contracts.RequestData) {
 				hostPort = attributeValueAsString(v)
 			case *tracepb.AttributeValue_IntValue:
 				hostPort = strconv.FormatInt(value.IntValue, 10)
+			case *tracepb.AttributeValue_DoubleValue:
+				hostPort = strconv.FormatFloat(value.DoubleValue, 'f', -1, 64)
 			}
 		case spanAttributeKeyHostName:
 			hostName = attributeValueAsString(v)
@@ -270,6 +272,9 @@ func fillRequestDataHTTP(span *tracepb.Span, data *contracts.RequestData) {
 			case *tracepb.AttributeValue_IntValue:
 				data.ResponseCode = strconv.FormatInt(value.IntValue, 10)
 				statusCode = int(value.IntValue)
+			case *tracepb.AttributeValue_DoubleValue:
+				data.ResponseCode = strconv.FormatFloat(value.DoubleValue, 'f', -1, 64)
+				statusCode = int(value.DoubleValue)
 			case *tracepb.AttributeValue_StringValue:
 				data.ResponseCode = attributeValueAsString(v)
 				statusCode, _ = strconv.Atoi(data.ResponseCode)
@@ -495,6 +500,9 @@ func fillRemoteDependencyDataHTTP(span *tracepb.Span, data *contracts.RemoteDepe
 			case *tracepb.AttributeValue_IntValue:
 				data.ResultCode = strconv.FormatInt(value.IntValue, 10)
 				statusCode = int(value.IntValue)
+			case *tracepb.AttributeValue_DoubleValue:
+				data.ResultCode = strconv.FormatFloat(value.DoubleValue, 'f', -1, 64)
+				statusCode = int(value.DoubleValue)
 			case *tracepb.AttributeValue_StringValue:
 				data.ResultCode = attributeValueAsString(v)
 				statusCode, _ = strconv.Atoi(data.ResultCode)
