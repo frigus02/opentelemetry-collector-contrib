@@ -37,19 +37,19 @@ The OpenTelemetry SpanKind determines the Application Insights telemetry data.
 
 Some attributes are mapped to specific telemetry properties depending on the component.
 
-| Application Insights property | OpenTelemetry attribute                                                                                                           | Default                          |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| Request.Name                  | `http.method`, `http.target` and `http.url`                                                                                       | span name                        |
-| Request.Url                   | `http.scheme`, `http.host`, `http.target`, `http.server_name`, `host.name`, `host.port` and `http.url`                            |                                  |
-| Request.Source                | `http.client_ip`                                                                                                                  |                                  |
-| Request.ResponseCode          | `http.status_code` and `status_code`                                                                                              | `"0"`                            |
-| Request.Success               | `http.status_code` and `status_code`                                                                                              | `true`                           |
-| Dependency.Name               | `http.method`, `http.target` and `http.url`                                                                                       | span name                        |
-| Dependency.Data               | `http.scheme`, `http.host`, `peer.hostname`, `peer.ip`, `peer.port`, `http.target`, `http.url`, `db.statement` and `peer.service` |                                  |
-| Dependency.Type               | `db.type`                                                                                                                         | `"Http"`, `"Grpc"` or `"InProc"` |
-| Dependency.Target             | `http.host`, `peer.hostname`, `peer.ip`, `peer.port`, `http.url` and `peer.address`                                               |                                  |
-| Dependency.ResultCode         | `http.status_code` and `status_code`                                                                                              | `"200"`                          |
-| Dependency.Success            | `http.status_code` and `status_code`                                                                                              | `true`                           |
+| Application Insights property | OpenTelemetry attribute                        | Default                          |
+| ----------------------------- | ---------------------------------------------- | -------------------------------- |
+| Request.Name                  | `http.method`, `http.target`                   | span name                        |
+| Request.Url                   | `http.scheme`, `http.host`, `http.target`      |                                  |
+| Request.Source                | `http.client_ip`                               |                                  |
+| Request.ResponseCode          | `http.status_code` or `status_code`            | `"0"`                            |
+| Request.Success               | `http.status_code` or `status_code`            | `true`                           |
+| Dependency.Name               | `http.method`, `http.target`                   | span name                        |
+| Dependency.Data               | `http.url` or `db.statement` or `peer.service` |                                  |
+| Dependency.Type               | `db.type`                                      | `"Http"`, `"Grpc"` or `"InProc"` |
+| Dependency.Target             | `peer.hostname`, `peer.port` or `peer.address` |                                  |
+| Dependency.ResultCode         | `http.status_code` or `status_code`            | `"200"`                          |
+| Dependency.Success            | `http.status_code` or `status_code`            | `true`                           |
 
 The exact mapping can be found [here](traceexporter.go).
 
