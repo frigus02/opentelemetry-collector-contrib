@@ -37,38 +37,19 @@ The OpenTelemetry SpanKind determines the Application Insights telemetry data.
 
 Some attributes are mapped to specific telemetry properties depending on the component.
 
-| Application Insights property | Component | OpenTelemetry attribute                                                                                | Default    |
-| ----------------------------- | --------- | ------------------------------------------------------------------------------------------------------ | ---------- |
-| Request.Name                  | http      | `http.method`, `http.target` and `http.url`                                                            | span name  |
-| Request.Url                   | http      | `http.scheme`, `http.host`, `http.target`, `http.server_name`, `host.name`, `host.port` and `http.url` |            |
-| Request.Source                | http      | `http.client_ip`                                                                                       |            |
-| Request.ResponseCode          | http      | `http.status_code`                                                                                     | `"0"`      |
-| Request.Success               | http      | `http.status_code`                                                                                     | `true`     |
-| Request.Name                  | grpc      |                                                                                                        | span name  |
-| Request.ResponseCode          | grpc      | `status_code`                                                                                          | `"0"`      |
-| Request.Success               | grpc      | `status_code`                                                                                          | `true`     |
-| Dependency.Name               |           |                                                                                                        | span name  |
-| Dependency.Type               |           |                                                                                                        | `"InProc"` |
-| Dependency.Success            |           |                                                                                                        | `true`     |
-| Dependency.ResultCode         |           |                                                                                                        | `"0"`      |
-| Dependency.Name               | db        |                                                                                                        | span name  |
-| Dependency.Data               | db        | `db.statement`                                                                                         |            |
-| Dependency.Type               | db        | `db.type`                                                                                              |            |
-| Dependency.Target             | db        | `peer.address`                                                                                         |            |
-| Dependency.ResultCode         | db        |                                                                                                        | `"0"`      |
-| Dependency.Success            | db        |                                                                                                        | `true`     |
-| Dependency.Name               | http      | `http.method`, `http.target` and `http.url`                                                            | span name  |
-| Dependency.Data               | http      | `http.scheme`, `http.host`, `peer.hostname`, `peer.ip`, `peer.port`, `http.target` and `http.url`      |            |
-| Dependency.Type               | http      |                                                                                                        | `"Http"`   |
-| Dependency.Target             | http      | `http.host`, `peer.hostname`, `peer.ip`, `peer.port` and `http.url`                                    |            |
-| Dependency.ResultCode         | http      | `http.status_code`                                                                                     | `"200"`    |
-| Dependency.Success            | http      | `http.status_code`                                                                                     | `true`     |
-| Dependency.Name               | grpc      |                                                                                                        | span name  |
-| Dependency.Data               | grpc      | `peer.service`                                                                                         |            |
-| Dependency.Type               | grpc      |                                                                                                        | `"Grpc"`   |
-| Dependency.Target             | grpc      | `peer.hostname` and `peer.port`                                                                        |            |
-| Dependency.ResultCode         | grpc      | `status_code`                                                                                          | `"0"`      |
-| Dependency.Success            | grpc      | `status_code`                                                                                          | `true`     |
+| Application Insights property | OpenTelemetry attribute                                                                                                           | Default                          |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| Request.Name                  | `http.method`, `http.target` and `http.url`                                                                                       | span name                        |
+| Request.Url                   | `http.scheme`, `http.host`, `http.target`, `http.server_name`, `host.name`, `host.port` and `http.url`                            |                                  |
+| Request.Source                | `http.client_ip`                                                                                                                  |                                  |
+| Request.ResponseCode          | `http.status_code` and `status_code`                                                                                              | `"0"`                            |
+| Request.Success               | `http.status_code` and `status_code`                                                                                              | `true`                           |
+| Dependency.Name               | `http.method`, `http.target` and `http.url`                                                                                       | span name                        |
+| Dependency.Data               | `http.scheme`, `http.host`, `peer.hostname`, `peer.ip`, `peer.port`, `http.target`, `http.url`, `db.statement` and `peer.service` |                                  |
+| Dependency.Type               | `db.type`                                                                                                                         | `"Http"`, `"Grpc"` or `"InProc"` |
+| Dependency.Target             | `http.host`, `peer.hostname`, `peer.ip`, `peer.port`, `http.url` and `peer.address`                                               |                                  |
+| Dependency.ResultCode         | `http.status_code` and `status_code`                                                                                              | `"200"`                          |
+| Dependency.Success            | `http.status_code` and `status_code`                                                                                              | `true`                           |
 
 The exact mapping can be found [here](traceexporter.go).
 
