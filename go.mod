@@ -42,9 +42,9 @@ require (
 	github.com/pavius/impi v0.0.3
 	github.com/stretchr/testify v1.6.1
 	github.com/tcnksm/ghr v0.13.0
-	go.opentelemetry.io/collector v0.9.0
-	golang.org/x/sys v0.0.0-20200803210538-64077c9b5642
-	honnef.co/go/tools v0.0.1-2020.1.5
+	go.opentelemetry.io/collector v0.17.0
+	golang.org/x/sys v0.0.0-20201015000850-e3ed0017c211
+	honnef.co/go/tools v0.0.1-2020.1.6
 )
 
 // Replace references to modules that are in this repository with their relateive paths
