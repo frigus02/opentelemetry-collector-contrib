@@ -40,11 +40,11 @@ require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/statsdreceiver v0.0.0-00010101000000-000000000000
 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/wavefrontreceiver v0.0.0-00010101000000-000000000000
 	github.com/pavius/impi v0.0.3
-	github.com/stretchr/testify v1.6.1
+	github.com/stretchr/testify v1.7.0
 	github.com/tcnksm/ghr v0.13.0
-	go.opentelemetry.io/collector v0.9.0
-	golang.org/x/sys v0.0.0-20200803210538-64077c9b5642
-	honnef.co/go/tools v0.0.1-2020.1.5
+	go.opentelemetry.io/collector v0.19.0
+	golang.org/x/sys v0.0.0-20201214210602-f9fddec55a1e
+	honnef.co/go/tools v0.0.1-2020.1.6
 )
 
 // Replace references to modules that are in this repository with their relateive paths
